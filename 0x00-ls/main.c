@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 
 	DIR *dir;
 	struct dirent *read;
-	char *buffer[BUFFER_SIZE];
 	char *dirname;
 
 	dirname = ".";
