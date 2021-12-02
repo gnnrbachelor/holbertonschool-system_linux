@@ -11,12 +11,13 @@
 
 int main(int argc, char *argv[])
 {
-	(void)argc;
-	(void)argv;
 
 	DIR *dir;
-	struct dirent *read;
 	char *dirname;
+	struct dirent *read;
+
+	(void)argc;
+	(void)argv;
 
 	dirname = ".";
 	dir = opendir(dirname);
@@ -36,5 +37,6 @@ int main(int argc, char *argv[])
 	}
 	closedir(dir);
 
+	return (0);
 }
 
