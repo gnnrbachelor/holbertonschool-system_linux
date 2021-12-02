@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	{
 		while ((read = readdir(dir)) != NULL)
 		{
-			if (strcmp(read->d_name, ".") != 0 && strcmp(read->d_name, "..") != 0)
+			if (_strcmp(read->d_name, ".") != 0 && _strcmp(read->d_name, "..") != 0)
 				printf("%s\n", read->d_name);
 		}
 	}

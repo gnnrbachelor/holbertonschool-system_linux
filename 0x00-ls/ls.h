@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <errno.h>
-#include <string.h>
 
 
 #define BUFFER_SIZE 1024
