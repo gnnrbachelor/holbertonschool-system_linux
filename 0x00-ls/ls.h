@@ -10,6 +10,7 @@
 #define BUFFER_SIZE 1024
 
 int _strcmp(char *s1, char *s2);
+int ls(char **args);
 
 #endif
 
