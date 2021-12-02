@@ -15,7 +15,15 @@ int ls(char **args)
 
 	(void)args;
 
-	dirname = ".";
+	if (args[1] != NULL)
+	{
+		dirname = args[1];
+	}
+	else
+	{
+		dirname = ".";
+	}
+
 	dir = opendir(dirname);
 
 	if (!dir)
