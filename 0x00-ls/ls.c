@@ -9,10 +9,7 @@
 
 int ls(char **args)
 {
-	DIR *dir;
 	char *dirname;
-	struct dirent *read;
-
 	(void)args;
 
 	if (args[1] != NULL)
@@ -24,21 +21,6 @@ int ls(char **args)
 		dirname = ".";
 	}
 
-	dir = opendir(dirname);
-
-	if (!dir)
-	{
-		return (0);
-	}
-
-	else
-	{
-		while ((read = readdir(dir)) != NULL)
-		{
-			if (_strcmp(read->d_name, ".") != 0 && _strcmp(read->d_name, "..") != 0)
-				printf("%s\n", read->d_name);
-		}
-	}
-	closedir(dir);
+	print_out(dirname);
 	return (1);
 }

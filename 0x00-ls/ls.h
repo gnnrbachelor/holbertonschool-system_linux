@@ -11,6 +11,7 @@
 
 int _strcmp(char *s1, char *s2);
 int ls(char **args);
+int print_out(char *path);
 
 #endif
 
