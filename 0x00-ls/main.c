@@ -16,19 +16,24 @@ int main(int argc, char *argv[])
 
 	DIR *dir;
 	struct dirent *read;
+	char *buffer[BUFFER_SIZE];
 	char *dirname;
 
 	dirname = ".";
 	dir = opendir(dirname);
-	if (dir == NULL)
+
+	if (!dir)
 	{
-		printf("Fuck off");
+		return (0);
 	}
 
 	else
 	{
 		while ((read = readdir(dir)) != NULL)
-			printf("%s\n", read->d_name);
+		{
+			if (strcmp(read->d_name, ".") != 0 && strcmp(read->d_name, "..") != 0)
+				printf("%s\n", read->d_name);
+		}
 	}
 	closedir(dir);
 
