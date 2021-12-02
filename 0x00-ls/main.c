@@ -11,6 +11,8 @@
 
 int main(int argc, char *argv[])
 {
+	(void)argc;
+	(void)argv;
 
 	DIR *dir;
 	struct dirent *read;
