@@ -7,10 +7,13 @@
  *
  */
 
-int print_out(char *path)
+int print_out(char *path, char **args, int argn)
 {
 	DIR *dir;
 	struct dirent *read;
+
+	(void)args;
+	(void)argn;
 
 	dir = opendir(path);
 
@@ -24,7 +27,7 @@ int print_out(char *path)
 		while ((read = readdir(dir)) != NULL)
 		{
 			if (_strcmp(read->d_name, ".") != 0 && _strcmp(read->d_name, "..") != 0)
-				printf("%s\n", read->d_name);
+				printf("%s	", read->d_name);
 		}
 	}
 	closedir(dir);

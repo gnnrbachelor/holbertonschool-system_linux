@@ -7,20 +7,26 @@
  */
 
 
-int ls(char **args)
+int ls(int argn, char **args)
 {
 	char *dirname;
-	(void)args;
+	int i;
 
-	if (args[1] != NULL)
+	if (argn > 1)
 	{
-		dirname = args[1];
+		for (i = 1; i <= argn; i++)
+		{
+			dirname = args[i];
+			if (dirname != NULL)
+			{
+				print_out(dirname, args, argn);
+			}
+		}
 	}
 	else
 	{
 		dirname = ".";
+		print_out(dirname, NULL, 0);
 	}
-
-	print_out(dirname);
 	return (1);
 }
