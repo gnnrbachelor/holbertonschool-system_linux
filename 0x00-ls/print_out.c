@@ -12,8 +12,11 @@ void print_files(path_node *node)
 
 	for (i = 0; i < node->files_index; i++)
 	{
-		printf("%s%c", node->files[i].name,
-			i + 1 == node->files_index ? '\n' : '\t');
+		if (!is_dir(&node->files[i]))
+		{
+			printf("%s%c", node->files[i].name,
+				i + 1 == node->files_index ? '\n' : '\t');
+		}
 	}
 }
 
