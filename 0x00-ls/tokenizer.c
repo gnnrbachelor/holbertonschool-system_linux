@@ -43,6 +43,19 @@ void print_files(path_node *node)
 	}
 }
 
+void get_dirs(path_node *node)
+{
+	size_t i;
+
+	for (i = 0; i < node->files_index; i++)
+	{
+		if (is_dir(&node->files[i]))
+		{
+			add_node_end(&node->dirs, &node-files[i]);
+		}
+	}
+}
+
 
 int is_dir(File *file)
 {

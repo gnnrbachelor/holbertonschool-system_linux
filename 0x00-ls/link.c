@@ -43,34 +43,25 @@ list_t *add_node(list_t **head, File *file)
 
 list_t *add_node_end(list_t **head, File *file)
 {
-	list_t *n_node;
-	list_t *temp;
+	list_t *new_node = malloc(sizeof(list_t));
+	list_t *node = *head;
 
+	if (!head || !new_node)
+		return (NULL);
+	_memset(new_node, 0, sizeof(*new_node));
 	if (file)
 	{
-		n_node = malloc(sizeof(list_t));
-		if (n_node)
-		{
-			_memset(n_node, 0, sizeof(*n_node));
-			n_node->next = NULL;
-		}
-		else
-			return (NULL);
-
-		if (!*head)
-		{
-			*head = n_node;
-			return (*head);
-		}
-		else
-		{
-			temp = *head;
-			while (temp->next)
-				temp = temp->next;
-			temp->next = n_node;
-		}
+		new_node->file = *file;
 	}
-	return (n_node);
+	if (node)
+	{
+		while (node->next)
+			node = node->next;
+		node->next = new_node;
+	}
+	else
+		*head = new_node;
+	return (new_node);
 }
 
 /**
@@ -83,16 +74,20 @@ list_t *add_node_end(list_t **head, File *file)
 
 void free_list(list_t *head)
 {
-	list_t *temp;
+	list_t *node, *next_node;
 
-	while (head)
+	if (!head)
+		return;
+
+	node = head;
+	while (node)
 	{
-		temp = head->next;
-		free(head);
-		head = temp;
+		next_node = node->next;
+		free(node);
+		node = next_node;
 	}
-
 }
+
 
 /**
  * print_list - Prints elements of a list_t list
