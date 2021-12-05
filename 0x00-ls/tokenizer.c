@@ -51,7 +51,7 @@ void get_dirs(path_node *node)
 	{
 		if (is_dir(&node->files[i]))
 		{
-			add_node_end(&node->dirs, &node-files[i]);
+			add_node_end(&node->directories, &node->files[i]);
 		}
 	}
 }
