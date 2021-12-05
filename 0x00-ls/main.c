@@ -3,7 +3,7 @@
 /**
  * main - entry
  * @argc: num
- * @argv: pointer to args
+ * @args: pointer to args
  * Return: 0
  *
  */
@@ -21,11 +21,11 @@ int main(int argc, char **args)
 
 	if (argc == 1)
 		tokenize(&node, ".");
-	
+
 	while (*++args)
 		tokenize(&node, *args);
-	get_dirs(&node);	
-	print_files(&node); 
+	get_dirs(&node);
+	print_files(&node);
 	print_dirs(&node);
 	free_node(&node);
 	return (node.status);

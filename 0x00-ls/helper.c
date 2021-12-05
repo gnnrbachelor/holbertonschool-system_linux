@@ -1,7 +1,6 @@
 #include "ls.h"
 
-/*
-
+/**
  * _realloc - Reallocates a memory block
  *
  * @ptr: Pointer to old mem
@@ -10,8 +9,6 @@
  *
  * Return: Pointer to new memory
  */
-
-
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -62,7 +59,7 @@ int _strcmp(char *s1, char *s2)
 /**
  * _memset - Fills memory with constant byte
  *
- * @s: memory address
+ * @p: memory address
  * @b: byte
  * @n: number to fill
  *
@@ -71,7 +68,7 @@ int _strcmp(char *s1, char *s2)
 
 void *_memset(void *p, char b, unsigned int n)
 {
-	char *start = p; 
+	char *start = p;
 	char *stop = start + n;
 
 	while (start < stop)

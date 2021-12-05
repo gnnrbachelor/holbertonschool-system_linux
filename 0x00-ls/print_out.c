@@ -1,49 +1,55 @@
 #include "ls.h"
 
 /**
- * print_out - Prints out folder contents
- * @path: path to file
- * Return: 0 or 1
- *
+ * print_files - Prints files
+ * @node: node
+ * Return: void
  */
 
-int print_out(path_node node, char *path, char **args, int argn)
+void print_files(path_node *node)
 {
-	DIR *dir;
-	struct dirent *read;
+	size_t i;
 
-	(void)args;
-	(void)argn;
-	(void)node;
-
-	dir = opendir(path);
-
-	if (!dir)
+	for (i = 0; i < node->files_index; i++)
 	{
-		return (0);
+		printf("%s%c", node->files[i].name,
+			i + 1 == node->files_index ? '\n' : '\t');
 	}
+}
 
-	else
+/**
+ * get_dirs - Gets directories
+ * @node: node
+ * Return: void
+ */
+
+void get_dirs(path_node *node)
+{
+	size_t i;
+
+	for (i = 0; i < node->files_index; i++)
 	{
-		while ((read = readdir(dir)) != NULL)
+		if (is_dir(&node->files[i]))
 		{
-			if (_strcmp(read->d_name, ".") != 0 && _strcmp(read->d_name, "..") != 0)
-			{
-
-				if (_strcmp(read->d_name, "..") == 0)
-				{
-					continue;
-				}
-				else
-				{
-					printf("%s ", read->d_name);
-				}
-			}
-
+			add_node_end(&node->directories, &node->files[i]);
 		}
 	}
-	closedir(dir);
-	return (1);
 }
 
 
+/**
+ * print_dirs - prints from linked list
+ * @node: node
+ */
+void print_dirs(path_node *node)
+{
+	list_t *temp = node->directories;
+	char *name;
+
+	node->mul_dirs = temp && temp->next;
+	while (temp)
+	{
+		name = pop_node(&temp);
+		ls(node, name);
+	}
+}

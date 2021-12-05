@@ -18,7 +18,7 @@ void tokenize(path_node *node, char *name)
 		node->file_size *= 2;
 		if (!node->files)
 			return;
-		
+
 	}
 
 	file = &node->files[node->files_index++];
@@ -32,52 +32,24 @@ void tokenize(path_node *node, char *name)
 	}
 }
 
-void print_files(path_node *node)
-{
-	size_t i;
-	
-	for (i = 0; i < node->files_index; i++)
-	{
-		printf("%s%c", node->files[i].name,
-			i + 1 == node->files_index ? '\n' : '\t');
-	}
-}
-
-void get_dirs(path_node *node)
-{
-	size_t i;
-
-	for (i = 0; i < node->files_index; i++)
-	{
-		if (is_dir(&node->files[i]))
-		{
-			add_node_end(&node->directories, &node->files[i]);
-		}
-	}
-}
-
 /**
- * print_dirs - prints from linked list
- * @node: node
+ * is_dir - Indicates if file is a directory
+ * @file: file
+ * Return: 0 if dir
+ *
  */
-void print_dirs(path_node *node)
-{
-	list_t *temp = node->directories;
-	char *name;
-
-	node->mul_dirs = temp && temp->next;
-	while (temp)
-	{
-		name = pop_node(&temp);
-		ls(node, name);
-	}
-}
-
 
 int is_dir(File *file)
 {
 	return (S_ISDIR(file->stat.st_mode));
 }
+
+/**
+ * not_found_error - Error
+ * @node: node
+ * @name: name
+ * Return: void
+ */
 
 void not_found_error(path_node *node, char *name)
 {
