@@ -32,9 +32,12 @@ void ls(path_node *node, char *path)
 	while ((read = readdir(dir)) != NULL)
 	{
 		if (*read->d_name != '.')
-			printf("%s%c", read->d_name, node->opt_1 ? '\n' : '\t');
+			printf("%s%c", read->d_name, node->options & OPTION_1 ? '\n' : '\t');
 	}
-	printf("\n");
+
+	if (!node->options & OPTION_1)
+		printf("\n");
+
 	closedir(dir);
 }
 
@@ -45,7 +48,7 @@ void choose_op(path_node *node, char *arg)
 		switch(*arg)
 		{
 			case '1':
-				node->opt_1 = 1;
+				node->options |= OPTION_1;
 				break;
 
 			default:

@@ -15,6 +15,7 @@
 #define START 1
 #define NONAME "hls"
 #define BUFFER 1024
+#define OPTION_1 0x01
 
 typedef struct File
 {
@@ -39,7 +40,7 @@ typedef struct path_node
 	int status;
 	int mul_dirs;
 	int printed_d;
-	int opt_1;
+	int options;
 
 } path_node;
 

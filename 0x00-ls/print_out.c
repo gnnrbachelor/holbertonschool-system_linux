@@ -15,7 +15,7 @@ void print_files(path_node *node)
 		if (!is_dir(&node->files[i]))
 		{
 			printf("%s%c", node->files[i].name,
-				(i + 1 == node->files_index) || node->opt_1 ? '\n' : '\t');
+				(i + 1 == node->files_index) || (node->options & OPTION_1) ? '\n' : '\t');
 		}
 	}
 }
