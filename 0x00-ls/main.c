@@ -9,7 +9,7 @@
  */
 
 
-int main(int ac, char **args)
+int main(int argc, char **args)
 {
 
 /*	ls(argc, argv); */
@@ -19,7 +19,7 @@ int main(int ac, char **args)
 	node.files = _realloc(NULL, 0, START * sizeof(File));
 	node.file_size = START;
 
-	if (ac == 1)
+	if (argc == 1)
 		tokenize(&node, ".");
 
 	while (*++args)
