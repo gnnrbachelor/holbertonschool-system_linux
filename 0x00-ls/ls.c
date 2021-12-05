@@ -7,7 +7,7 @@
  */
 
 
-int ls(int argn, char **args)
+int ols(int argn, char **args)
 {
 	char *dirname;
 	int i;

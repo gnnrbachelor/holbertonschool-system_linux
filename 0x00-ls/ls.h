@@ -44,7 +44,7 @@ typedef struct path_node
 
 
 int _strcmp(char *s1, char *s2);
-int ls(int argn, char **args);
+int ols(int argn, char **args);
 int print_out(path_node node, char *path, char**args, int argn);
 void *_memset(void *s, char b, unsigned int n);
 
@@ -59,6 +59,11 @@ int is_dir(File *file);
 void append_file(path_node *node, char *name);
 void not_found_error(path_node *node, char *name);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void get_dirs(path_node *node);
+char *pop_node(list_t **head);
+void ls(path_node *node, char *path);
+void print_dirs(path_node *node);
+char *pop_node(list_t **head);
 
 
 #endif

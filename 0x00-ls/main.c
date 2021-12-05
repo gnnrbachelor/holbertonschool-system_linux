@@ -24,9 +24,9 @@ int main(int argc, char **args)
 	
 	while (*++args)
 		tokenize(&node, *args);
-	
+	get_dirs(&node);	
 	print_files(&node); 
-
+	print_dirs(&node);
 	return (0);
 
 }

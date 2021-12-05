@@ -56,6 +56,23 @@ void get_dirs(path_node *node)
 	}
 }
 
+/**
+ * print_dirs - prints from linked list
+ * @node: node
+ */
+void print_dirs(path_node *node)
+{
+	list_t *temp = node->directories;
+	char *name;
+
+	node->mul_dirs = temp && temp->next;
+	while (temp)
+	{
+		name = pop_node(&temp);
+		ls(node, name);
+	}
+}
+
 
 int is_dir(File *file)
 {
