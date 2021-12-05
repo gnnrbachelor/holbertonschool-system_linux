@@ -27,7 +27,8 @@ int main(int argc, char **args)
 	get_dirs(&node);	
 	print_files(&node); 
 	print_dirs(&node);
-	return (0);
+	free_node(&node);
+	return (node.status);
 
 }
 
