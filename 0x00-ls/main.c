@@ -12,8 +12,6 @@
 int main(int argc, char **args)
 {
 
-/*	ls(argc, argv); */
-
 	path_node node = NODE_INIT;
 
 	node.files = _realloc(NULL, 0, START * sizeof(File));
