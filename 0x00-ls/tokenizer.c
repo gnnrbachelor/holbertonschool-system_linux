@@ -60,3 +60,18 @@ void not_found_error(path_node *node, char *name)
 	perror(buffer);
 }
 
+/**
+ * bad_option - Error
+ * @node: node
+ * @name: name
+ * Return: void
+ */
+
+
+
+void bad_option(path_node *node, char path)
+{
+	node->status = 2;
+	fprintf(stderr, "%s: invalid option -- '%c'\n", NONAME, path);
+}
+

@@ -23,7 +23,16 @@ int main(int argc, char **args)
 		tokenize(&node, ".");
 
 	while (*++args)
-		tokenize(&node, *args);
+	{
+		if (**args == '-')
+			choose_op(&node, *args);
+		else
+			tokenize(&node, *args);
+	}
+
+	if (!node.files_index)
+		tokenize(&node, ".");
+
 	get_dirs(&node);
 	print_files(&node);
 	print_dirs(&node);
