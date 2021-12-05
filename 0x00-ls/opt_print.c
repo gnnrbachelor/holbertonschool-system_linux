@@ -41,11 +41,18 @@ void ls(path_node *node, char *path)
 	closedir(dir);
 }
 
+/**
+ * choose_op - For options
+ * @node: node
+ * @arg: arg
+ * Return: void
+ */
+
 void choose_op(path_node *node, char *arg)
 {
-	while(*++arg)
+	while (*++arg)
 	{
-		switch(*arg)
+		switch (*arg)
 		{
 			case '1':
 				node->options |= OPTION_1;

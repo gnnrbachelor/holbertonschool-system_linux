@@ -63,11 +63,9 @@ void not_found_error(path_node *node, char *name)
 /**
  * bad_option - Error
  * @node: node
- * @name: name
+ * @path: name
  * Return: void
  */
-
-
 
 void bad_option(path_node *node, char path)
 {
