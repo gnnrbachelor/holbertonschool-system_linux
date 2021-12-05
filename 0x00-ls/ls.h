@@ -16,6 +16,8 @@
 #define NONAME "hls"
 #define BUFFER 1024
 #define OPTION_1 0x01
+#define OPTION_a 0x02
+#define OPTION_A 0x04
 
 typedef struct File
 {

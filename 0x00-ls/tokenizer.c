@@ -70,6 +70,6 @@ void not_found_error(path_node *node, char *name)
 void bad_option(path_node *node, char path)
 {
 	node->status = 2;
-	fprintf(stderr, "%s: invalid option -- '%c'\n", NONAME, path);
+	fprintf(stdout, "%s: invalid option -- '%c'\n", NONAME, path);
 }
 
