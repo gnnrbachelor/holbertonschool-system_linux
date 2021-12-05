@@ -1,7 +1,7 @@
 #include "ls.h"
 
+/*
 
-/**
  * _realloc - Reallocates a memory block
  *
  * @ptr: Pointer to old mem
@@ -11,37 +11,30 @@
  * Return: Pointer to new memory
  */
 
+
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
-	char *cpy;
 	char *p;
 
+	if (!ptr)
+		return (malloc(new_size));
+	if (!new_size)
+		return (free(ptr), NULL);
 	if (new_size == old_size)
 		return (ptr);
 
-	if (ptr == NULL)
-	{
-		p = malloc(new_size);
-	}
-
-	if (new_size == 0 && ptr != NULL)
-	{
-		free(ptr);
-		return (NULL);
-	}
-
 	p = malloc(new_size);
-	cpy = p;
-
-	if (p == NULL)
+	if (!p)
 		return (NULL);
 
-	for (i = 0; i < old_size; i++)
-		p[i] = cpy[i];
-
-	return (cpy);
+	old_size = old_size < new_size ? old_size : new_size;
+	while (old_size--)
+		p[old_size] = ((char *)ptr)[old_size];
+	free(ptr);
+	return (p);
 }
+
 
 /**
  * _strcmp - Compares two strings.

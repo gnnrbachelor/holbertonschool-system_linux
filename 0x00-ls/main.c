@@ -9,25 +9,24 @@
  */
 
 
-int main(int argc, char *argv[])
+int main(int argc, char **args)
 {
 
-/*	path_node node = {NULL, 0, 0, NULL, EXIT_SUCCESS, 0, 0};
+/*	ls(argc, argv); */
 
-	node.files = _realloc(NULL, 0, sizeof(File));
-	node.file_size = 1;
-*/
+	path_node node = NODE_INIT;
+
+	node.files = _realloc(NULL, 0, START * sizeof(File));
+	node.file_size = START;
 
 	if (argc == 1)
-	{
-		ls(argc, argv);		
-	}
-
-	else
-	{
-		ls(argc, argv);
-	}
+		tokenize(&node, ".");
 	
+	while (*++args)
+		tokenize(&node, *args);
+	
+	print_files(&node); 
+
 	return (0);
 
 }

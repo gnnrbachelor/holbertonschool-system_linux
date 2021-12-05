@@ -7,13 +7,14 @@
  *
  */
 
-int print_out(char *path, char **args, int argn)
+int print_out(path_node node, char *path, char **args, int argn)
 {
 	DIR *dir;
 	struct dirent *read;
 
 	(void)args;
 	(void)argn;
+	(void)node;
 
 	dir = opendir(path);
 
@@ -27,7 +28,18 @@ int print_out(char *path, char **args, int argn)
 		while ((read = readdir(dir)) != NULL)
 		{
 			if (_strcmp(read->d_name, ".") != 0 && _strcmp(read->d_name, "..") != 0)
-				printf("%s	", read->d_name);
+			{
+
+				if (_strcmp(read->d_name, "..") == 0)
+				{
+					continue;
+				}
+				else
+				{
+					printf("%s ", read->d_name);
+				}
+			}
+
 		}
 	}
 	closedir(dir);

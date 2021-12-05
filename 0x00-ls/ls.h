@@ -11,8 +11,12 @@
 
 
 #define BUFFER_SIZE 1024
+#define NODE_INIT {NULL, 0, 0, NULL, EXIT_SUCCESS, 0, 0}
+#define START 1
+#define NONAME "hls"
+#define BUFFER 1024
 
-typedef struct file
+typedef struct File
 {
 	char *name;
 	struct stat stat;
@@ -38,26 +42,10 @@ typedef struct path_node
 	
 } path_node;
 
-/**
- * struct list_s - singly linked list
- *
- *  @str: string - (malloc'ed string)
- *  @len: length of the string
- *   @next: points to the next node
- *
- * Description: singly linked list node structure
- */
-
-typedef struct path_list
-{
-	char *path_item;
-	struct path_list *next;
-} path_list;
 
 int _strcmp(char *s1, char *s2);
 int ls(int argn, char **args);
-int print_out(char *path, char**args, int argn);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+int print_out(path_node node, char *path, char**args, int argn);
 void *_memset(void *s, char b, unsigned int n);
 
 size_t print_list(list_t *h);
@@ -65,6 +53,12 @@ list_t *add_node(list_t **head, File *file);
 list_t *add_node_end(list_t **head, File *file);
 void free_list(list_t *head);
 void free_node(path_node *head);
+void tokenize(path_node *node, char *name);
+void print_files(path_node *node);
+int is_dir(File *file);
+void append_file(path_node *node, char *name);
+void not_found_error(path_node *node, char *name);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 
 #endif
