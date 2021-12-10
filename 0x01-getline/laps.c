@@ -26,40 +26,6 @@ void race_state(int *id, size_t size)
 
 	for (i = 0; i < size; i++)
 		add_car(&head, id[i]);
-/*
-	{
-		if (!head)
-		{
-			n_node = malloc(sizeof(Car));
-			if (!n_node)
-				exit(EXIT_FAILURE);
-			n_node->id = id[i];
-			n_node->lap_n = 0;
-			n_node->next = NULL;
-			head = n_node;
-			printf("Car %d joined the race\n", n_node->id);
-			return;
-		}
-
-		for (n_node = head; n_node->next && n_node->next->id <= id[i]; n_node = n_node->next)
-		;
-		if (n_node->id == id[i])
-		{
-			n_node->lap_n++;
-			return;
-		}
-
-		temp = malloc(sizeof(Car));
-		if (!temp)
-			exit(EXIT_FAILURE);
-		temp->id = id[i];
-		temp->lap_n = 0;
-		temp->next = temp->next;
-		n_node->next = temp;
-		printf("Car %d joined the race\n", n_node->id);
-
-	}
-*/
 
 
 	printf("Race state:\n");
