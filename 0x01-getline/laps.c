@@ -74,7 +74,7 @@ void add_car(Car **head, int id)
 	Car *n_node = NULL;
 	Car *temp = NULL;
 
-	if (!*head)
+	if (!*head || id < (*head)->id)
 	{
 		n_node = malloc(sizeof(Car));
 		if (!n_node)
