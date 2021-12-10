@@ -81,7 +81,7 @@ void add_car(Car **head, int id)
 			exit(EXIT_FAILURE);
 		n_node->id = id;
 		n_node->lap_n = 0;
-		n_node->next = NULL;
+		n_node->next = *head;
 		*head = n_node;
 		printf("Car %d joined the race\n", id);
 		return;
