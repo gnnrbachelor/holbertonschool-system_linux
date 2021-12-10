@@ -71,8 +71,8 @@ void race_state(int *id, size_t size)
 
 void add_car(Car **head, int id)
 {
-	Car *temp = NULL;
 	Car *n_node = NULL;
+	Car *temp = NULL;
 
 	if (!*head)
 	{
@@ -83,7 +83,7 @@ void add_car(Car **head, int id)
 		n_node->lap_n = 0;
 		n_node->next = NULL;
 		*head = n_node;
-		printf("Car %d joined the race\n", n_node->id);
+		printf("Car %d joined the race\n", id);
 		return;
 	}
 
@@ -103,6 +103,6 @@ void add_car(Car **head, int id)
 	temp->lap_n = 0;
 	temp->next = n_node->next;
 	n_node->next = temp;
-	printf("Car %d joined the race\n", n_node->id);
+	printf("Car %d joined the race\n", id);
 
 	}
