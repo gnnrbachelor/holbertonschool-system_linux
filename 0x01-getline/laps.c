@@ -9,7 +9,7 @@
 
 void race_state(int *id, size_t size)
 {
-	static Car *head = NULL;
+	static Car *head;
 	Car *temp = NULL;
 	size_t i;
 
