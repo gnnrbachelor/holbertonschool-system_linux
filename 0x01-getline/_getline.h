@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define BUFFSIZE 1024
+#define BUFSIZE 1024
 
 typedef struct fd
 {
@@ -15,13 +15,14 @@ typedef struct fd
 	size_t i;
 	size_t len;
 	struct fd *next;
-} buffer;
+} Buf;
 
 
 char *_getline(const int fd);
-char *_strchr(char *s, char c, ssize_t size);
-char *get_line(buffer *head, const int fd);
-void handle_eof(buffer *head);
+char *_strchr(char *s, char c);
+Buf *get_buffer(Buf *head, const int fd);
+char *read_buffer(Buf *f_buffer);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 
 #endif
