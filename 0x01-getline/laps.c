@@ -34,6 +34,13 @@ void race_state(int *id, size_t size)
 
 }
 
+/**
+ * add_car - Adds car
+ * @head: head
+ * @id: Id
+ * Return: Void
+ */
+
 
 void add_car(Car **head, int id)
 {
@@ -53,7 +60,8 @@ void add_car(Car **head, int id)
 		return;
 	}
 
-	for (n_node = *head; n_node->next && n_node->next->id <= id; n_node = n_node->next)
+	for (n_node = *head; n_node->next && n_node->next->id <= id;
+		 n_node = n_node->next)
 		;
 
 	if (n_node->id == id)
