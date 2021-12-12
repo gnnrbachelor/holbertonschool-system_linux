@@ -17,12 +17,35 @@ char *_getline(const int fd)
 {
 	static Buf head;
 	Buf *f_buffer = NULL;
+	Buf *temp = NULL;
 	char *line = NULL;
 
+	if (fd == -1)
+	{
+		if (head.buffer)
+			head.buffer = (free(head.buffer), NULL);
+		for (f_buffer = head.next; f_buffer;)
+		{
+			if (f_buffer->buffer)
+			{
+				free(f_buffer->buffer);
+				f_buffer->buffer = NULL;
+			}
+			temp = f_buffer;
+			f_buffer = f_buffer->next;
+			free(temp);
+		}
+		head.next = NULL;
+		return (NULL);
+	}
+
 	f_buffer = get_buffer(&head, fd);
-	line = read_buffer(f_buffer);
+	if (f_buffer)
+		line = read_buffer(f_buffer);
 	return (line);
 }
+
+
 
 Buf *get_buffer(Buf *head, const int fd)
 {
@@ -62,6 +85,8 @@ Buf *get_buffer(Buf *head, const int fd)
 	return (node);
 
 }
+
+
 
 char *read_buffer(Buf *f_buffer)
 {
