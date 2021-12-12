@@ -1,13 +1,13 @@
 #include "_getline.h"
 
-char *_strchr(char *s, char c)
+char *_strchr(char *s, char c, ssize_t size)
 {
 	if (!s)
 		return (NULL);
 	do {
 		if (*s == c)
 			return (s);
-	} while (*s++ != '\0');
+	} while (*s++ != '\0' && --size > 0);
 
 	return (NULL);
 }
@@ -66,7 +66,7 @@ Buf *get_buffer(Buf *head, const int fd)
 char *read_buffer(Buf *f_buffer)
 {
 	char buffer[BUFSIZE + 1];
-	char *p = _strchr(f_buffer->buffer + f_buffer->i, '\n');
+	char *p = _strchr(f_buffer->buffer + f_buffer->i, '\n', f_buffer->len - f_buffer->i);
 	char *line;
 	ssize_t r = 0;
 
@@ -77,22 +77,24 @@ char *read_buffer(Buf *f_buffer)
 			r = read(f_buffer->fd, buffer, BUFSIZE);
 			if (r <= 0)
 				return (NULL);
-			buffer[r] = 0;
-			f_buffer->buffer = _realloc(f_buffer->buffer, f_buffer->len, (f_buffer->len ? f_buffer->len : 1) + r);
+			f_buffer->buffer = _realloc(f_buffer->buffer, f_buffer->len, f_buffer->len + r + 1);
 			if (!f_buffer->buffer)
 				return (NULL);
-			f_buffer->len = (f_buffer->len ? f_buffer->len : 1) + r;
-			strcpy(f_buffer->buffer, buffer);
-			p = _strchr(f_buffer->buffer, '\n');
+			memcpy(f_buffer->buffer + f_buffer->len, buffer, r);
+			f_buffer->len += r;
+			p = _strchr(f_buffer->buffer + (f_buffer->len - r), '\n', r);
 			if (p)
+			{
+				f_buffer->buffer[f_buffer->len] = 0;
 				break;
+			}
 		}
 	}
 
 	*p = '\0';
 	line = strdup(f_buffer->buffer + f_buffer->i);
 	f_buffer->i = (p - f_buffer->buffer) + 1;
-	if (f_buffer->i + 1 == f_buffer->len)
+	if (f_buffer->i == f_buffer->len)
 	{
 		f_buffer->i = f_buffer->len = 0;
 		free(f_buffer->buffer);

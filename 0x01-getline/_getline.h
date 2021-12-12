@@ -19,7 +19,7 @@ typedef struct fd
 
 
 char *_getline(const int fd);
-char *_strchr(char *s, char c);
+char *_strchr(char *s, char c, ssize_t size);
 Buf *get_buffer(Buf *head, const int fd);
 char *read_buffer(Buf *f_buffer);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
