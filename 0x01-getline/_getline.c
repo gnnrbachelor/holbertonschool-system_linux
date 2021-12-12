@@ -1,5 +1,13 @@
 #include "_getline.h"
 
+/**
+ * _strchr - Matches char in string
+ * @s: string
+ * @c: char
+ * @size: size
+ * Return: pointer to char
+ */
+
 char *_strchr(char *s, char c, ssize_t size)
 {
 	if (!s)
@@ -12,6 +20,11 @@ char *_strchr(char *s, char c, ssize_t size)
 	return (NULL);
 }
 
+/**
+ * _getline - implements getline
+ * @fd: fd
+ * Return: Pointer to line buffer
+ */
 
 char *_getline(const int fd)
 {
@@ -45,7 +58,12 @@ char *_getline(const int fd)
 	return (line);
 }
 
-
+/**
+ * get_buffer - Buffer to linked list
+ * @head: Head
+ * @fd: File Desc
+ * Return: Buf
+ */
 
 Buf *get_buffer(Buf *head, const int fd)
 {
@@ -87,11 +105,19 @@ Buf *get_buffer(Buf *head, const int fd)
 }
 
 
+/**
+ * read_buffer - Reads from buffer
+ * @f_buffer: File Desc Buffer
+ * Return: Pointer to line buf
+ *
+ */
+
 
 char *read_buffer(Buf *f_buffer)
 {
 	char buffer[BUFSIZE + 1];
-	char *p = _strchr(f_buffer->buffer + f_buffer->i, '\n', f_buffer->len - f_buffer->i);
+	char *p = _strchr(f_buffer->buffer + f_buffer->i,
+				 '\n', f_buffer->len - f_buffer->i);
 	char *line;
 	ssize_t r = 0;
 
@@ -102,7 +128,8 @@ char *read_buffer(Buf *f_buffer)
 			r = read(f_buffer->fd, buffer, BUFSIZE);
 			if (r <= 0)
 				return (NULL);
-			f_buffer->buffer = _realloc(f_buffer->buffer, f_buffer->len, f_buffer->len + r + 1);
+			f_buffer->buffer = _realloc(f_buffer->buffer,
+							f_buffer->len, f_buffer->len + r + 1);
 			if (!f_buffer->buffer)
 				return (NULL);
 			memcpy(f_buffer->buffer + f_buffer->len, buffer, r);
@@ -127,6 +154,14 @@ char *read_buffer(Buf *f_buffer)
 	}
 	return (line);
 }
+
+/**
+ * _realloc - custom reallo
+ * @ptr: Pointer
+ * @old_size: Old Size
+ * @new_size: New Size
+ * Return: Void
+ */
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
