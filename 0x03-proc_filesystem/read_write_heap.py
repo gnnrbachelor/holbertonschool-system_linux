@@ -72,9 +72,5 @@ if __name__=='__main__':
     if len(write_str) > len(search_str):
         exit(1)
 
-    try:
-        read_write_heap(pid, search_str, write_str)
-    except Exception as e:
-        print(e)
-        exit(1)
+    read_write_heap(pid, search_str, write_str)
 
