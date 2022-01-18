@@ -56,18 +56,9 @@ if __name__=='__main__':
     if len(sys.argv) != 4:
         print_and_exit()
 
-    try:
-        pid = int(sys.argv[1])
-    except ValueError:
-        print_and_exit()
-
+    pid = int(sys.argv[1])
     search_str = str(sys.argv[2])
-    if search_str == "":
-        print_and_exit()
-
     write_str = str(sys.argv[3])
-    if write_str == "":
-        print_and_exit()
 
     if len(write_str) > len(search_str):
         exit(1)
