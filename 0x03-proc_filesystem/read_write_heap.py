@@ -27,8 +27,8 @@ def read_write_heap(pid, search_str, replace_str):
         if s_line[len(s_line) - 1] == "[heap]":
             heap_found = True
             mem_range = s_line[0].split('-')
-            start = int(range_mem[0], 16)
-            end = int(range_mem[1], 16)
+            start = int(mem_range[0], 16)
+            end = int(mem_range[1], 16)
             mem_file.seek(start)
             s = mem_file.read(end - start)
             index_search_str = s.find(bytes(search_str, 'utf-8'))
