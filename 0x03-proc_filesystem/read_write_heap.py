@@ -1,10 +1,14 @@
 #!/usr/bin/python3
+""" Module for proc file system exercise"""
 
 import sys
 
+
 def print_and_exit():
+    """ Prints and exits """
     print('Usage: {} pid search write'.format(sys.argv[0]))
     sys.exit(1)
+
 
 def read_write_heap(pid, search_str, replace_str):
     """read_write_heap function"""
@@ -52,7 +56,7 @@ def read_write_heap(pid, search_str, replace_str):
     print("replacing string")
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     if len(sys.argv) != 4:
         print_and_exit()
 
@@ -64,4 +68,3 @@ if __name__=='__main__':
         exit(1)
 
     read_write_heap(pid, search_str, write_str)
-
