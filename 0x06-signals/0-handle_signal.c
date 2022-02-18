@@ -1,8 +1,8 @@
 #include "signals.h"
 
 /**
- * signal_handler - Prints gotcha
-i* @sig: Signal
+ * printer - Prints gotcha
+ * @sig: Signal
  * Return: Void
  */
 
@@ -16,7 +16,7 @@ void printer(int sig)
 
 /**
  * handle_signal - Handles ctr-c
- * Return: 1 or 0 
+ * Return: 1 or 0
  */
 
 int handle_signal(void)
