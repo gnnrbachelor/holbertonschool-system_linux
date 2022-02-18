@@ -16,7 +16,6 @@ int handle_signal(void);
 void printer(int sig);
 void (*current_handler_signal(void))(int);
 int handle_sigaction(void);
-
-
+void (*current_handler_sigaction(void))(int);
 
 #endif
