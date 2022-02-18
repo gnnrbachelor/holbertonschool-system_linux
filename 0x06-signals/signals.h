@@ -3,6 +3,7 @@
 
 #define _GNU_SOURCE
 
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,6 +15,7 @@
 int handle_signal(void);
 void printer(int sig);
 void (*current_handler_signal(void))(int);
+int handle_sigaction(void);
 
 
 
