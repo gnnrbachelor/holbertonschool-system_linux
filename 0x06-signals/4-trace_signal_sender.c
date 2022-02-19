@@ -3,6 +3,9 @@
 
 /**
  * sig_hand - Prints signal SIGQUIT
+ * @sig_num: Signal number
+ * @info: Info
+ * @context: Context
  * Return: 0 or -1
  *
  */
