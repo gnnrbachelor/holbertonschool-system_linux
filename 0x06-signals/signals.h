@@ -17,5 +17,6 @@ void printer(int sig);
 void (*current_handler_signal(void))(int);
 int handle_sigaction(void);
 void (*current_handler_sigaction(void))(int);
-
+int trace_signal_sender(void);
+void sig_hand(int sig_num, siginfo_t *info, void *context);
 #endif
