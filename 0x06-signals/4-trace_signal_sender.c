@@ -2,7 +2,7 @@
 
 
 /**
- * printer - Prints signal SIGQUIT
+ * sig_hand - Prints signal SIGQUIT
  * Return: 0 or -1
  *
  */
