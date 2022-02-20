@@ -10,6 +10,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stddef.h>
 
 
 int handle_signal(void);
@@ -19,4 +20,6 @@ int handle_sigaction(void);
 void (*current_handler_sigaction(void))(int);
 int trace_signal_sender(void);
 void sig_hand(int sig_num, siginfo_t *info, void *context);
+int pid_exist(pid_t pid);
+void all_in_one(void);
 #endif
