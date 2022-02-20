@@ -20,9 +20,7 @@ void sig_print(int sig_num, siginfo_t *info, void *context)
 
 
 /**
- * handle_signal - Handles signal SIGQUIT
- * Return: 0 or -1
- *
+ * all_in_one - Handles all signals
  */
 
 void all_in_one(void)
