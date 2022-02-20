@@ -31,11 +31,7 @@ void all_in_one(void)
 
 	sa.sa_sigaction = sig_print;
 	sa.sa_flags |= SA_SIGINFO;
-	for (sg = 1; sg < SIGRTMIN; sg++)
-	{
-		if (sg != SIGKILL && sg != SIGSTOP)
-			sigaction(sg, &sa, NULL);
-	}
-
+	for (sg = 0; sg < 64; sg++)
+		sigaction(sg, &sa, NULL);
 }
 
