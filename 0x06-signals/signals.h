@@ -23,4 +23,7 @@ void sig_hand(int sig_num, siginfo_t *info, void *context);
 int pid_exist(pid_t pid);
 void all_in_one(void);
 int sigset_init(sigset_t *set, int *signals);
+int signals_block(int *signals);
+int signals_unblock(int *signals);
+
 #endif

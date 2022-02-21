@@ -45,3 +45,13 @@ int main(void)
     }
     return (EXIT_SUCCESS);
 }
+
+
+int _signals_block(int *signals)
+{
+	sigset_t set;
+
+	if (sigset_init(&set, signals))
+		return (-1);
+	return (sigprocmask(SIG_BLOCK, &set, NULL));
+}
