@@ -22,4 +22,5 @@ int trace_signal_sender(void);
 void sig_hand(int sig_num, siginfo_t *info, void *context);
 int pid_exist(pid_t pid);
 void all_in_one(void);
+int sigset_init(sigset_t *set, int *signals);
 #endif
