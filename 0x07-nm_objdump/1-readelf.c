@@ -11,13 +11,12 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	char *args[] = {"/usr/bin/readelf", "-W", "-S", "", NULL};
+	char *args[] = {"./hobjdump", "-sf", "", NULL};
 
-	if (argc != 2)
-		exit(0);
+	(void)argc;
 
-	args[3] = argv[1];
-	if (execve(args[0], args, env) == -1)
+	args[2] = argv[1];
+	if (execve("/usr/bin/objdump", args, env) == -1)
 	{
 		perror("execv");
 		return (EXIT_FAILURE);
