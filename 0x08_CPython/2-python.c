@@ -21,7 +21,7 @@ void print_python_bytes(PyObject *p)
 	size = ((PyVarObject *)p)->ob_size;
 	printf("  size: %ld\n", size);
 	printf("  trying string: %s\n", ((PyBytesObject *)p)->ob_sval);
-	if (size < 9 )
+	if (size < 9)
 		size++;
 	else
 		size = 10;
@@ -51,6 +51,7 @@ void print_python_list(PyObject *p)
 	for (i = 0; i < size; i++)
 	{
 		PyObject *pobj = ((PyListObject *)p)->ob_item[i];
+
 		printf("Element %ld: %s\n", i, pobj->ob_type->tp_name);
 		if (pobj->ob_type == &PyBytes_Type)
 			print_python_bytes(pobj);
