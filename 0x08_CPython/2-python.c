@@ -30,7 +30,6 @@ void print_python_bytes(PyObject *p)
 	for (i = 0; i < size; i++)
 		printf("%02hhx%c",
 			((PyBytesObject *)p)->ob_sval[i], i + 1 == size ? '\n' : ' ');
-
 }
 
 
