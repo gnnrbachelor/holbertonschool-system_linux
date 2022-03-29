@@ -21,10 +21,8 @@ void print_python_bytes(PyObject *p)
 	size = ((PyVarObject *)p)->ob_size;
 	printf("  size: %ld\n", size);
 	printf("  trying string: %s\n", ((PyBytesObject *)p)->ob_sval);
-	if (size < 9 )
-	{
+	if (size < 9)
 		size = size + 1;
-	}
 	else
 		size = 10;
 
