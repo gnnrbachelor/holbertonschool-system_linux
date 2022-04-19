@@ -7,3 +7,6 @@ strace_0: 0-strace.c
 
 strace_1: 1-strace.c
 	$(CC) $(CFLAGS) 1-strace.c -o $(FILENAME)_1
+
+strace_2: 2-strace.c
+	$(CC) $(CFLAGS) 2-strace.c -o $(FILENAME)_2
