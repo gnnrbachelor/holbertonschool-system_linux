@@ -17,7 +17,7 @@
 
 /* Normally, MAX_PARAMS is always 6 */
 # define MAX_PARAMS	6
-#define EXECVE_SYS_NUM 59
+#define EXECVE_NUM 59
 
 /**
  * enum type_e - Enumerates the different types present in the different

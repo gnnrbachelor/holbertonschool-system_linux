@@ -25,7 +25,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	if (pid == 0)
 	{
-		printf("59\n");
+		printf("%d\n", EXECVE_NUM);
 		ptrace(PTRACE_TRACEME, pid, NULL, NULL);
 		execve(argv[1], argv + 1, envp);
 	}
@@ -36,7 +36,7 @@ int main(int argc, char *argv[], char *envp[])
 			ptrace(PT_SYSCALL, pid, NULL, NULL);
 			wait(&status);
 			ptrace(PT_GETREGS, pid, NULL, &user_regs);
-			if (!index)
+			if (index)
 				printf("%lu\n", (size_t)user_regs.orig_rax);
 		}
 	}
