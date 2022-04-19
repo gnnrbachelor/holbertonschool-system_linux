@@ -2,10 +2,12 @@
 
 /**
  * main - executes and traces a given command
- * @av: array vector containing a command and its args
- * @ac: arg count
- * Return: int
+ * @argc:  arg count
+ * @argv: args
+ * @envp: Environment
+ * Return: 1 or 0
  */
+
 int main(int argc, char *argv[], char **envp)
 {
 	int index, status;
@@ -29,7 +31,7 @@ int main(int argc, char *argv[], char **envp)
 	}
 	else
 	{
-		for (status = 1, index = 0; !WIFEXITED(status); index ^=1)
+		for (status = 1, index = 0; !WIFEXITED(status); index ^= 1)
 		{
 			ptrace(PT_SYSCALL, pid, NULL, NULL);
 			wait(&status);
