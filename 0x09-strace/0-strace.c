@@ -8,7 +8,7 @@
  * Return: 1 or 0
  */
 
-int main(int argc, char *argv[], char **envp)
+int main(int argc, char *argv[], char *envp[])
 {
 	int index, status;
 	struct user_regs_struct user_regs;
