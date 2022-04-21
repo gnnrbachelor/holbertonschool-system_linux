@@ -26,7 +26,7 @@ void print_out(const syscall_t *sys_call,
 	for (index = 0; sys_call->params[0] != VOID
 			&& index < sys_call->nb_params; index++)
 		if (sys_call->params[index] == VARARGS)
-			printf("%s...", index ? "," : "");
+			printf("%s...", index ? ", " : "");
 		else
 			printf("%s%#lx", index ? ", " : "", p[index]);
 }
