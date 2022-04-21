@@ -1,6 +1,15 @@
 #include "syscalls.h"
 
-void print_out(const syscall_t *sys_call, struct user_regs_struct *user_regs, pid_t pid)
+/**
+ * print_out - Prints
+ * @sys_call: system call
+ * @user_regs: User regs
+ * @pid: PID
+ * Return: Void
+ */
+
+void print_out(const syscall_t *sys_call,
+		struct user_regs_struct *user_regs, pid_t pid)
 {
 	size_t index, p[6];
 
@@ -14,7 +23,8 @@ void print_out(const syscall_t *sys_call, struct user_regs_struct *user_regs, pi
 	p[5] = user_regs->r9;
 
 	putchar('(');
-	for (index = 0; sys_call->params[0] != VOID && index < sys_call->nb_params; index++)
+	for (index = 0; sys_call->params[0] != VOID
+			&& index < sys_call->nb_params; index++)
 		if (sys_call->params[index] == VARARGS)
 			printf("%s...", index ? "," : "");
 		else
