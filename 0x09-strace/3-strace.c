@@ -25,7 +25,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	if (pid == 0)
 	{
-		printf("execve");
+		printf("execve(0, 0, 0");
 		ptrace(PTRACE_TRACEME, pid, NULL, NULL);
 		execve(argv[1], argv + 1, envp);
 	}
@@ -41,11 +41,15 @@ int main(int argc, char *argv[], char *envp[])
 				printf("\n%s", syscalls_64_g[user_regs.orig_rax].name);
 				print_out(&syscalls_64_g[user_regs.orig_rax], &user_regs, pid);
 			}
-			else if (WIFEXITED(status))
-				printf(" = ?\n");
 			else
-				printf(" = %#lx", (size_t)user_regs.rax);
+			{
+				if (WIFEXITED(status))
+					printf(") = ?\n");
+				else
+					printf(") = %#lx", (size_t)user_regs.rax);
+			}
 		}
 	}
+
 	return (0);
 }
