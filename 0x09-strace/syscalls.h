@@ -1080,5 +1080,6 @@ static syscall_t const syscalls_32_g[] = {
 	{"seccomp", 354, -1, 0, {-1, -1, -1, -1, -1, -1}}
 };
 
+void print_out(const syscall_t *sys_call, struct user_regs_struct *user_regs, pid_t pid);
 
 #endif /* !_SYSCALLS_H_ */

@@ -10,3 +10,6 @@ strace_1: 1-strace.c
 
 strace_2: 2-strace.c
 	$(CC) $(CFLAGS) 2-strace.c -o $(FILENAME)_2
+
+strace_3: 3-strace.c print_out.c
+	$(CC) $(CFLAGS) 3-strace.c print_out.c -o $(FILENAME)_3
