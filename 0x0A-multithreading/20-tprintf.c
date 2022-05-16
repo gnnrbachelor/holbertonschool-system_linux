@@ -2,6 +2,30 @@
 
 static pthread_mutex_t mutex;
 
+
+/**
+ * begin - init mutex
+ *
+ */
+
+__attribute__((contructor))void begin(void)
+{
+	if (pthread_mutex_init(&mutex, NULL) != 0)
+		perror(NULL);
+}
+
+/**
+ * end - destroy mutex
+ *
+ */
+
+__attribute__((destructor))void end(void)
+{
+	if (pthread_mutex_destroy(&mutex))
+		perror(NULL);
+}
+
+
 /**
  * tprintf - prints
  * @format: Format
@@ -26,27 +50,5 @@ int tprintf(char const *format, ...)
 		perror(NULL);
 	return (num_char);
 
-}
-
-/**
- * begin - init mutex
- *
- */
-
-__attribute__((contructor)) void begin(void)
-{
-	if (pthread_mutex_init(&mutex, NULL) != 0)
-		perror(NULL);
-}
-
-/**
- * end - destroy mutex
- *
- */.
-
-__attribute__((destructor))void end(void)
-{
-	if (pthread_mutex_destroy(&mutex))
-		perror(NULL);
 }
 
