@@ -8,7 +8,7 @@ static pthread_mutex_t mutex;
  *
  */
 
-__attribute__((contructor))void begin(void)
+__attribute__((constructor))void begin(void)
 {
 	if (pthread_mutex_init(&mutex, NULL) != 0)
 		perror(NULL);
