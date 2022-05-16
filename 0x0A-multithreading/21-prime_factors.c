@@ -1,8 +1,8 @@
 #include "multithreading.h"
-#include <math.h>
+
 
 /**
- * print_factors - Factors
+ * prime_factors - Factors
  * @s: String
  * Return: List of prime #
  *
