@@ -45,7 +45,7 @@ int tprintf(char const *format, ...)
 	num_char = printf("[%lu] ", pthread_self());
 	num_char += vprintf(format, args);
 	va_end(args);
-	if (pthread_mutex_unlock(&mutex) != 0);
+	if (pthread_mutex_unlock(&mutex) != 0)
 		perror(NULL);
 	return (num_char);
 
