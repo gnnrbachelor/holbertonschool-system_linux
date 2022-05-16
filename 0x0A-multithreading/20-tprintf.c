@@ -28,7 +28,7 @@ __attribute__((destructor))void end(void)
 
 /**
  * tprintf - prints
- * @format: Format
+ * @format: string
  * Return: # Char printed
  *
  */
@@ -38,16 +38,13 @@ int tprintf(char const *format, ...)
 	va_list args;
 	int num_char;
 
-	if (pthread_mutex_lock(&mutex) != 0)
-		perror(NULL);
-
 	va_start(args, format);
+	pthread_mutex_lock(&mutex);
 	num_char = printf("[%lu] ", pthread_self());
 	num_char += vprintf(format, args);
+	pthread_mutex_unlock(&mutex);
 	va_end(args);
-	if (pthread_mutex_unlock(&mutex) != 0)
-		perror(NULL);
-	return (num_char);
+	return (0);
 
 }
 
