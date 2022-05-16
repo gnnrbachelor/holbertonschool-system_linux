@@ -42,7 +42,7 @@ __attribute__((contructor)) void begin(void)
 /**
  * end - destroy mutex
  *
- *.
+ */.
 
 __attribute__((destructor))void end(void)
 {
