@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	sock.sin_family = AF_INET;
 	sock.sin_port = htons(port);
 	sock.sin_addr.s_addr = inet_addr(host_num);
-	if (connect(sock_fd, (struct sockaddr *)&sock, sizeof(sock)) == - 1)
+	if (connect(sock_fd, (struct sockaddr *)&sock, sizeof(sock)) == -1)
 	{
 		perror("Connection Failure");
 		return (EXIT_FAILURE);
