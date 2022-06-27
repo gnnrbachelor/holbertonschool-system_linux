@@ -10,6 +10,7 @@ int sock_init(void)
 		handle_error("Socket Failure");
 	memset(&server_addr, 0, sizeof(server_addr));
 	server_addr.sin_family = AF_INET;
+	server_addr.sin_port = htons(PORT);
 	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	setsockopt(server, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 	if (bind(server, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
