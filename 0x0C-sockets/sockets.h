@@ -15,6 +15,7 @@
 #define POST_SZ			strlen(POST)
 #define GET			"GET"
 #define GET_SZ			strlen(GET)
+#define DELETE			"DELETE"
 #define GET_OK			"HTTP/1.1 200 OK\r\n"
 #define GETALL			-2
 #define GET_CONST_SZ		2
@@ -24,6 +25,10 @@
 #define PATHID			"/todos?id="
 #define RESP_OK			"HTTP/1.1 200 OK\r\n\r\n"
 #define RESP_OK_LEN		strlen(RESP_OK)
+#define RESP_DEL		"HTTP/1.1 204 No Content\r\n\r\n"
+#define RESP_DEL_SZ 		strlen(RESP_DEL)
+#define RESP_NOT_FOUND		"HTTP/1.1 404 Not Found\r\n\r\n"
+#define RESP_NOT_FOUND_SZ	strlen(RESP_NOTFOUND)
 #define RESP_UNPROC		"HTTP/1.1 422 Unprocessable Entity\r\n\r\n"
 #define RESP_UNPROC_SZ		strlen(RESP_UNPROC)
 #define RESP_NOTFOUND		"HTTP/1.1 404 Not Found\r\n\r\n"
@@ -33,7 +38,6 @@
 #define CONTYPE			"Content-Type: application/json\r\n\r\n"
 #define RESP_SZ_REQ		"HTTP/1.1 Length Required\r\n\r\n"
 #define RESP_SZ_REQ_SZ		strlen(RESP_SZ_REQ)
-
 
 
 
