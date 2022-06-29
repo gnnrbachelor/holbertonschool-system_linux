@@ -2,15 +2,20 @@
 
 int main(void)
 {
-	int server, accept_payload;
+	int server, ret;
+	todo_queue_t *tdq;
 
+	tdq = malloc(sizeof(*tdq));
+	if (!tdq)
+		return (EXIT_FAILURE);
+	tdq->start = tdq->end = NULL;
 	setbuf(stdout, NULL);
 	server = sock_init();
 	if (server < 0)
 		return (EXIT_FAILURE);
-	accept_payload = accept_connect(server);
+	ret = accept_connection(server, tdq);
 	close(server);
-	return (accept_payload);
+	return (ret);
 }
 
 

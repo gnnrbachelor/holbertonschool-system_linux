@@ -1,17 +1,16 @@
 #include "../../sockets.h"
 
-int accept_connect(int server)
+int accept_connection(int server, todo_queue_t *tdq)
 {
 	int client;
 	char buf[BUFSIZ];
 
 	while (1)
 	{
-		client = accept_rec(server, buf, 1);
+		client = accept_rec(server, buf, 0);
 		if (client < 0)
 			return (EXIT_FAILURE);
-		print_data(buf);
-		send(client, RESP_OK, RESP_OK_LEN, 0);
+		parse_request(buf, client, tdq);
 		close(client);
 	}
 	return (EXIT_SUCCESS);
