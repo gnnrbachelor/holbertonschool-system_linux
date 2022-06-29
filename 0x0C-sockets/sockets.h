@@ -13,6 +13,12 @@
 #define PORT 8080
 #define POST			"POST"
 #define POST_SZ			strlen(POST)
+#define GET			"GET"
+#define GET_SZ			strlen(GET)
+#define GET_OK			"HTTP/1.1 200 OK\r\n"
+#define GET_CONST_SZ		2
+#define CONTYPE			"Content-Type: application/json\r\n\r\n"
+#define CONTYPE			"Content-Type: application/json\r\n\r\n"
 #define PATH			"/todos "
 #define RESP_OK			"HTTP/1.1 200 OK\r\n\r\n"
 #define RESP_OK_LEN		strlen(RESP_OK)
@@ -25,6 +31,7 @@
 #define CONTYPE			"Content-Type: application/json\r\n\r\n"
 #define RESP_SZ_REQ		"HTTP/1.1 Length Required\r\n\r\n"
 #define RESP_SZ_REQ_SZ		strlen(RESP_SZ_REQ)
+
 
 
 
@@ -57,6 +64,9 @@ todo_node_t *post(char *buf, todo_queue_t *tdq);
 void parse_request(char *buf, int client, todo_queue_t *tdq);
 int parse_error(char *buf, int client);
 void post_response(int client, todo_queue_t *tdq);
+int parse_errors(char *buf, int client, char *res_type);
+void get_all(int client, todo_queue_t *tdq);
+
 
 
 
